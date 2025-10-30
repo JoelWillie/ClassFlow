@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to ClassFlow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .intro-container {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .logo-animation {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            font-weight: 300;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .get-started-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .get-started-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .floating-papers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .paper {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: floatPaper 15s infinite;
+        }
+
+        .paper:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .paper:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .paper:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .paper:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .paper:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes floatPaper {
+            0% {
+                top: 110%;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: -10%;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 0.15em solid white;
+            white-space: nowrap;
+            animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+
+        .auth-container {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: scaleIn 0.4s ease-out;
+        }
+
+        .auth-container.active {
+            display: block;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: #666;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            color: #666;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c00;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .guest-banner {
+            background: #fff3cd;
+            color: #856404;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            text-decoration: underline;
+        }
+
+        .back-btn:hover {
+            color: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-papers">
+        <div class="paper">📄</div>
+        <div class="paper">📚</div>
+        <div class="paper">✏️</div>
+        <div class="paper">📝</div>
+        <div class="paper">🎒</div>
+    </div>
+
+    <div class="intro-container" id="intro-screen">
+        <div class="logo-animation">📚</div>
+        <h1 class="title">ClassFlow</h1>
+        <p class="subtitle">Your personal assignment tracker</p>
+        <button class="get-started-btn" onclick="showAuthScreen()">Get Started</button>
+    </div>
+
+    <div class="auth-container" id="auth-screen">
+        <div class="auth-header">
+            <h2>Welcome Back</h2>
+            <p>Choose how you want to continue</p>
+        </div>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+            <button class="auth-tab" onclick="switchTab('signup')">Sign Up</button>
+            <button class="auth-tab" onclick="switchTab('guest')">Guest</button>
+        </div>
+
+        <div id="error-message" class="error-message"></div>
+
+        <form class="auth-form active" id="login-form" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required placeholder="Enter password">
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+        <form class="auth-form" id="signup-form" onsubmit="handleSignup(event)">
+            <div class="form-group">
+                <label for="signup-name">Display Name</label>
+                <input type="text" id="signup-name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" required placeholder="Create password" minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="signup-confirm">Confirm Password</label>
+                <input type="password" id="signup-confirm" required placeholder="Confirm password">
+            </div>
+            <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+
+        <form class="auth-form" id="guest-form" onsubmit="handleGuest(event)">
+            <div class="guest-banner">
+                ⚠️ Guest mode: Your data won't be saved permanently. You can convert to an account later.
+            </div>
+            <div class="form-group">
+                <label for="guest-nickname">Nickname (optional)</label>
+                <input type="text" id="guest-nickname" placeholder="Guest">
+            </div>
+            <button type="submit" class="submit-btn">Continue as Guest</button>
+        </form>
+
+        <button class="back-btn" onclick="showIntroScreen()">← Back</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        function showAuthScreen() {
+            document.getElementById('intro-screen').style.display = 'none';
+            document.getElementById('auth-screen').classList.add('active');
+        }
+
+        function showIntroScreen() {
+            document.getElementById('intro-screen').style.display = 'block';
+            document.getElementById('auth-screen').classList.remove('active');
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(`${tab}-form`).classList.add('active');
+            hideError();
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        function hideError() {
+            document.getElementById('error-message').classList.remove('show');
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            hideError();
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                await Auth.login(email, password);
+                window.location.href = 'index.html';
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        async function handleSignup(event) {
+            event.preventDefault();
+            hideError();
+
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+
+            if (password !== confirm) {
+                showError('Passwords do not match');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('Password must be at least 6 characters');
+                return;
+            }
+
+            try {
+                await Auth.signup(email, password, name);
+                window.location.href = 'index.html';
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        async function handleGuest(event) {
+            event.preventDefault();
+            
+            const nickname = document.getElementById('guest-nickname').value;
+            await Auth.loginAsGuest(nickname);
+            window.location.href = 'index.html';
+        }
+
+        if (Auth.isAuthenticated()) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,608 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+}
+
+.view {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.assignment-card,
+.course-card,
+.summary-card {
+    animation: fadeIn 0.4s ease-out backwards;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.assignment-card:nth-child(1) { animation-delay: 0.05s; }
+.assignment-card:nth-child(2) { animation-delay: 0.1s; }
+.assignment-card:nth-child(3) { animation-delay: 0.15s; }
+.assignment-card:nth-child(4) { animation-delay: 0.2s; }
+.assignment-card:nth-child(5) { animation-delay: 0.25s; }
+.assignment-card:nth-child(6) { animation-delay: 0.3s; }
+
+.summary-card:nth-child(1) { animation-delay: 0.1s; }
+.summary-card:nth-child(2) { animation-delay: 0.2s; }
+.summary-card:nth-child(3) { animation-delay: 0.3s; }
+.summary-card:nth-child(4) { animation-delay: 0.4s; }
+
+.course-card:nth-child(1) { animation-delay: 0.1s; }
+.course-card:nth-child(2) { animation-delay: 0.15s; }
+.course-card:nth-child(3) { animation-delay: 0.2s; }
+.course-card:nth-child(4) { animation-delay: 0.25s; }
+.course-card:nth-child(5) { animation-delay: 0.3s; }
+.course-card:nth-child(6) { animation-delay: 0.35s; }
+
+.assignment-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px var(--shadow);
+}
+
+.course-card:hover,
+.summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px var(--shadow);
+}
+
+.modal.active {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.active {
+    animation: fadeIn 0.25s ease-out;
+    opacity: 1;
+}
+
+.modal-overlay {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+}
+
+.banner {
+    animation: slideInFromTop 0.4s ease-out;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.icon-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+.nav-btn {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-btn:hover::after {
+    width: 80%;
+}
+
+.nav-btn.active::after {
+    width: 100%;
+}
+
+.logo {
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    color: var(--primary-dark);
+}
+
+.card-btn {
+    transition: all 0.2s ease;
+}
+
+.card-btn:hover {
+    transform: translateY(-2px);
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.file-upload-area {
+    transition: all 0.3s ease;
+}
+
+.file-upload-area.drag-over {
+    transform: scale(1.02);
+    animation: pulse 1s infinite;
+}
+
+.file-item {
+    animation: slideInFromLeft 0.3s ease-out;
+}
+
+.file-remove:hover {
+    transform: scale(1.2) rotate(90deg);
+    transition: all 0.3s ease;
+}
+
+.theme-option {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-option:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 16px var(--shadow);
+}
+
+.theme-option:active {
+    transform: scale(0.98);
+}
+
+.course-badge {
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.course-badge:hover {
+    transform: scale(1.05);
+}
+
+.card-status {
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.card-status:hover {
+    transform: scale(1.05);
+}
+
+.file-thumbnail {
+    transition: all 0.3s ease;
+}
+
+.file-thumbnail:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.calendar-event {
+    transition: all 0.2s ease;
+}
+
+.calendar-event:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
+
+.kanban-cards {
+    min-height: 100px;
+}
+
+.kanban-column {
+    transition: all 0.3s ease;
+}
+
+.kanban-column:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.close-btn {
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: var(--danger);
+}
+
+input[type="checkbox"] {
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+    animation: bounce 0.4s ease;
+}
+
+.analytics-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes loadingBar {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    animation: loadingBar 1.5s infinite;
+}
+
+.header {
+    backdrop-filter: blur(10px);
+    background: rgba(248, 250, 252, 0.95);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .header {
+    background: rgba(30, 41, 59, 0.95);
+}
+
+.card-title {
+    transition: color 0.2s ease;
+}
+
+.assignment-card:hover .card-title {
+    color: var(--primary);
+}
+
+.overdue {
+    animation: shake 0.5s ease-in-out;
+    animation-iteration-count: 1;
+}
+
+.mark-complete-btn:hover {
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes successPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+}
+
+.status-completed {
+    animation: successPulse 0.6s ease-out;
+}
+
+.filter-select,
+.search-input {
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover,
+.search-input:hover {
+    border-color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.page-transition-enter {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.page-transition-exit {
+    animation: fadeIn 0.3s ease-out reverse;
+}
+
+.stagger-item {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes notification-slide {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-enter {
+    animation: notification-slide 0.4s ease-out;
+}
+
+.card-actions button {
+    transition: all 0.2s ease;
+}
+
+.card-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.view-header h2 {
+    animation: slideInFromLeft 0.4s ease-out;
+}
+
+.view-header .btn {
+    animation: slideInFromRight 0.4s ease-out;
+}
+
+.calendar-cell.today {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.analytics-card canvas {
+    animation: fadeIn 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes progressBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.progress-bar {
+    animation: progressBar 1s ease-out;
+}
+
+.empty-state {
+    animation: fadeIn 0.6s ease-out;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--surface) 25%,
+        var(--surface-hover) 50%,
+        var(--surface) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.celebrate {
+    animation: bounce 0.6s ease-in-out;
+}
