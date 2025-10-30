@@ -2,7 +2,7 @@
 
 ## How to Upload Your Timetable
 
-ClassFlow now lets you **upload a photo of your actual timetable** instead of using a complex calendar grid!
+ClassFlow lets you **upload a photo of your actual timetable** instead of using a complex calendar grid!
 
 ### Step 1: Take a Photo
 1. Take a clear photo of your physical timetable
@@ -158,6 +158,9 @@ Want a hard copy?
 - Scroll if needed
 - Try landscape mode on mobile
 - Upload a wider aspect ratio image
+
+### Seeing another Timetable
+- Just remove it and upload yours 
 
 ---
 

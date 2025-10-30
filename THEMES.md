@@ -2,7 +2,7 @@
 
 ## 27 Stunning Themes!
 
-ClassFlow now features **27 beautiful, hand-crafted themes** with gradients, patterns, and special effects!
+ClassFlow features **27 beautiful, hand-crafted themes** with gradients, patterns, and special effects!
 
 ---
 
@@ -180,14 +180,6 @@ Energizing, motivating, fresh
 
 ## 🎨 Theme Features
 
-### Visual Enhancements
-All themes now feature:
-- **Gradient backgrounds** - No more flat colors!
-- **Backdrop blur** on header - Frosted glass effect
-- **Glow effects** on special themes (Neon, Cyber, Galaxy)
-- **Pattern overlays** on select themes
-- **Smooth transitions** when switching
-
 ### Theme-Specific Effects
 - **Neon/Cyber/Matrix**: Glowing borders and shadows
 - **Galaxy/Midnight**: Radial gradient overlays
@@ -361,16 +353,6 @@ Based on design quality:
 - **Tech** - Modern feel
 - **Energy** - High alertness
 - **Cool** - Unique style
-
----
-
-## 📱 Mobile Experience
-
-All 27 themes are:
-- ✅ Fully responsive
-- ✅ Touch-friendly
-- ✅ Battery efficient
-- ✅ Work in both portrait & landscape
 
 ---
 

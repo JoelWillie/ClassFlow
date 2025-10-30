@@ -50,39 +50,7 @@ A responsive, themeable static website to help students track assignments and te
 2. Open `index.html` in a modern web browser
 3. That's it! The app runs entirely in your browser
 
-You can also use a local server:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js (with http-server)
-npx http-server
-
-# VS Code Live Server extension
-Right-click index.html > Open with Live Server
-```
-
-Then visit `http://localhost:8000`
-
-### Deployment
-
-ClassFlow can be hosted on any static hosting service:
-
-#### GitHub Pages
-1. Push code to a GitHub repository
-2. Go to Settings > Pages
-3. Select branch (usually `main`) and root folder
-4. Save - your site will be live at `https://username.github.io/repo-name`
-
-#### Netlify
-1. Drag and drop the folder to [Netlify Drop](https://app.netlify.com/drop)
-2. Or connect your GitHub repo for automatic deployments
-
-#### Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in the project folder
-3. Follow the prompts
+" ***Please note if you want more info on setting it up, you can veiw the deployment file*** "
 
 ## Usage Guide
 
@@ -188,7 +156,7 @@ MIT License - Free to use, modify, and distribute
 
 ## Credits
 
-Built with ❤️ for students who want a simple, private, offline-capable assignment tracker.
+Built with for students who want a simple, private and capable assignment tracker.
 
 **Libraries Used:**
 - [localForage](https://localforage.github.io/localForage/) - IndexedDB wrapper
